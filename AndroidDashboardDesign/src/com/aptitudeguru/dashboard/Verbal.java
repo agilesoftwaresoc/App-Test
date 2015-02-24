@@ -20,7 +20,7 @@ public class Verbal extends Activity {
 		        finish(); 
 		        return; 
 		    } 
-			setContentView(R.layout.messages_layout);
+			setContentView(R.layout.verbal_layout);
 			
 			Button btn_home = (Button) findViewById(R.id.btn_home);
 		
@@ -28,7 +28,7 @@ public class Verbal extends Activity {
 			
 			Button btn_score = (Button) findViewById(R.id.btn_score);
 			
-			Button btn_tutorial = (Button) findViewById(R.id.btn_soundon);
+			Button btn_tutorial = (Button) findViewById(R.id.btn_tutorial);
 			
 			Button btn_about = (Button) findViewById(R.id.btn_about);
 		Button btn_help = (Button) findViewById(R.id.btn_help);
@@ -184,9 +184,6 @@ public class Verbal extends Activity {
 					startActivity(i);
 				}
 			});
-			
-			
-		
 			
 		}
 	}

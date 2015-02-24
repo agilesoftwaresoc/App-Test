@@ -114,7 +114,7 @@ public class AndroidDashboardDesignActivity extends Activity {
 		Button btn_score = (Button) findViewById(R.id.btn_score);
 
 		
-		Button btn_soundon = (Button) findViewById(R.id.btn_soundon);
+		Button btn_soundon = (Button) findViewById(R.id.btn_tutorial);
 
 	
 		Button btn_about = (Button) findViewById(R.id.btn_about);

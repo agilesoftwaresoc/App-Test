@@ -28,7 +28,7 @@ public class Quantitative extends Activity {
 	        finish(); 
 	        return; 
 	    } 
-		setContentView(R.layout.news_feed_layout);
+		setContentView(R.layout.quantative_layout);
 
 		
 		Button btn_home = (Button) findViewById(R.id.btn_home);
@@ -40,7 +40,7 @@ public class Quantitative extends Activity {
 		Button btn_score = (Button) findViewById(R.id.btn_score);
 
 		
-		Button btn_tutorial = (Button) findViewById(R.id.btn_soundon);
+		Button btn_tutorial = (Button) findViewById(R.id.btn_tutorial);
 
 		
 		Button btn_about = (Button) findViewById(R.id.btn_about);

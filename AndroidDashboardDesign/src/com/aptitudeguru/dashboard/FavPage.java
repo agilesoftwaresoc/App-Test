@@ -44,7 +44,7 @@ public class FavPage extends Activity {
 
 			
 			Button btn_about = (Button) findViewById(R.id.btn_about);
-			Button btn_soundon = (Button) findViewById(R.id.btn_soundon);
+			Button btn_soundon = (Button) findViewById(R.id.btn_tutorial);
 			btn_soundon.setOnClickListener(new View.OnClickListener() {
 
 				@Override
