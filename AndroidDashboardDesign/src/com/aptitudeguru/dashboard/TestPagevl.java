@@ -59,10 +59,10 @@ public class TestPagevl extends Activity implements OnClickListener {
 
 	  // String category="7777";
 	   private CountDownTimer countDownTimer;
-	   private CountDownTimer countDownTimer1;
+	   //private CountDownTimer countDownTimer1;
 	 
 	   	 private boolean timerHasStarted = false;
-	   	 private Button startB;
+	   	// private Button startB;
 	   	 public TextView text;
 	   	 private final long startTime =   60*20 * 1000;
 	   	 private final long interval = 1 * 1000;
@@ -206,10 +206,10 @@ public class TestPagevl extends Activity implements OnClickListener {
        }
 	    public void onCreate(Bundle savedInstanceState) {
 	        super.onCreate(savedInstanceState);
-	        setContentView(R.layout.testnohint);
+	        setContentView(R.layout.test);
 	        
 	        Bundle bundle = getIntent().getExtras();
-	         cat = bundle.getString("cat");
+	        cat = bundle.getString("cat");
 	        start=bundle.getInt("start");
 	       
 	        b1=(RadioButton) findViewById(R.id.option1);
@@ -295,9 +295,7 @@ public class TestPagevl extends Activity implements OnClickListener {
 	      /**
 	         * Creating all buttons instances
 	         * */
-	        // Dashboard News feed button
-	        Button btn_home = (Button) findViewById(R.id.btn_home);
-	        
+
 	        // Dashboard Friends button
 	        Button btn_fav = (Button) findViewById(R.id.btn_fav);
 	        
@@ -754,37 +752,7 @@ public class TestPagevl extends Activity implements OnClickListener {
                 
                   // Setting Icon to Dialog
                   alertDialog.setIcon(R.drawable.about);
-
-                  // Setting OK Button
-                  alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
-                	  public void onClick(DialogInterface dialog, int which) {
-                		  // Write your code here to execute after dialog closed
-                		  Intent i = new Intent(getApplicationContext(), showscorevl.class);
-                		  time=text.getText()+"";
-	    					 
-  					    sec=sec+40;
-  					    String timetaken=min+"."+sec+"";
-  					    
-  					   
-  					    double timetak=Float.parseFloat(timetaken);
-  					    
-  					   
-  					    double tt=20.00-timetak;
-  					    
-  					  DecimalFormat df = new DecimalFormat("00.00");
-  					    String j=df.format(tt);
-  					    i.putExtra("tt", j);
-
-  						i.putExtra("score", ans);
-  						i.putExtra("givenans", givenans);
-  						i.putExtra("allid", a);
-						i.putExtra("category", cat);
-        					startActivity(i);
-  						TestPagevl.this.finish();
-                		  
-                	  }
-    });
-
+              	
     // Showing Alert Message
     alertDialog.show();
 		   	   

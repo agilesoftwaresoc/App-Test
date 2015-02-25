@@ -10,8 +10,7 @@
 
     <include
         android:id="@+id/include1"
-        android:layout_height="wrap_content"
-        layout="@layout/nohint" />
+        layout="@layout/nohome" />
 
     <LinearLayout
         android:layout_width="wrap_content"

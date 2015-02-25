@@ -5,21 +5,23 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
+import com.epapyrus.plugpdf.SimpleDocumentReader;
+import com.epapyrus.plugpdf.SimpleReaderFactory;
+import com.epapyrus.plugpdf.core.PlugPDF;
+import com.epapyrus.plugpdf.core.PlugPDFException.InvalidLicense;
+
 import android.annotation.SuppressLint;
 import android.app.Activity;
-
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
-
 import android.widget.TextView;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.AssetManager;
-
 import android.widget.Button;
 import androidhive.dashboard.R;
 
@@ -66,6 +68,17 @@ public class Tutorialpage extends Activity implements OnTouchListener {
 	    public void onCreate(Bundle savedInstanceState) {
 	        super.onCreate(savedInstanceState);
 	        setContentView(R.layout.tutorial_layout);
+	        
+	        try {
+	     	   // Initialize PlugPDF with a license key.
+	     	   PlugPDF.init(getApplicationContext(),
+	     	    "D9B22DA93HF9GH59ED34BC3F6C227AG878DGE239E478B49B8CH7FBF5");
+	     	 
+	     	  } catch (InvalidLicense ex) {
+	     	  Log.e("PlugPDF", "error ", ex);
+	     	  // Handle invalid license exceptions.
+	     	 }
+	   
 	      
 	        
 	       
@@ -180,43 +193,33 @@ public class Tutorialpage extends Activity implements OnTouchListener {
 	    			@Override
 	    			public void onClick(View view) {
 
+	    				
+	    				String fileName = new String("ctuts.pdf");
+	    				AssetManager am = getResources().getAssets();
+	    		 
+	    				try {
+	    					InputStream is = am.open(fileName);
+	    					Context c = view.getContext();
+	    				    Activity a = (Activity) c;
+	    		 
+	    					int size = is.available();
+	    		            if (size > 0) {
+	    						byte[] data = new byte[size];
+	    						is.read(data);
+	    						SimpleDocumentReader v = SimpleReaderFactory.createSimpleViewer(a,null);
+	    						v.openData(data, data.length, "");
+	    		                        }
+	    					is.close();
+	    				} catch (Exception ex) {
+	    					Log.e("KS", "error ", ex);
+	    				}
 
-	    				 AssetManager assetManager = getAssets();
-		             InputStream in = null;
-			             OutputStream out = null;
-			             File file = new File(getFilesDir(), "ctuts.pdf");
-			             try {
-			                 in = assetManager.open("ctuts.pdf");
-			                 out = openFileOutput(file.getName(), Context.MODE_WORLD_READABLE);
-
-			                 copyFile(in, out);
-			                 in.close();
-			                 in = null;
-			                 out.flush();
-			                 out.close();
-			                 out = null;
-			             } catch (Exception e) {
-			                 Log.e("tag", e.getMessage());
-			             }
-
-			             Intent intent = new Intent(Intent.ACTION_VIEW);
-			             intent.setDataAndType(
-			                     Uri.parse("file://" + getFilesDir() + "/ctuts.pdf"),
-			                     "application/pdf");
-
-			             startActivity(intent);
-			   }
-			             private void copyFile(InputStream in, OutputStream out) throws IOException {
-			     	        byte[] buffer = new byte[1024];
-			     	        int read;
-			     	        while ((read = in.read(buffer)) != -1) {
-			     	            out.write(buffer, 0, read);
-			     	        }
-			         
+	    		    }
+	    					
 						
 					
 	    			}
-	    		});
+	    		);
 
 	    		btn_cpp.setOnClickListener(new View.OnClickListener() {
 
