@@ -25,7 +25,7 @@ public class AndroidDashboardDesignActivity extends Activity {
 	private static final int DATABASE_VERSION = 1;
 
 	
-	private static final String DATABASE_NAME = "aptitudedatabaseFR";
+	private static final String DATABASE_NAME = "aptitudedatabase";
 	
 	String local = Locale.getDefault().toString();
 
@@ -102,10 +102,13 @@ public class AndroidDashboardDesignActivity extends Activity {
 				
 				//test
 				
-					if(local=="fr_"){
+					if(local=="fr"){
 						copydb(getBaseContext().getAssets().open("aptitudedatabase"),
 								new FileOutputStream(datapath + "/aptitudedatabase"));
 					}
+					else{
+					}
+					
 			}
 				
 		} catch (Exception e) {

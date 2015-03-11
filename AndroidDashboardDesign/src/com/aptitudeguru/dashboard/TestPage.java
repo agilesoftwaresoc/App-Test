@@ -55,6 +55,7 @@ public class TestPage extends Activity implements OnClickListener
 	Button btn_prev;
 	
 	String local = Locale.getDefault().toString();
+	String french ="fr_FR";
     DatabaseHandler db = new DatabaseHandler(this);
 	//DatabaseHandlerFR dbFR = new DatabaseHandlerFR(this);
 
@@ -171,20 +172,30 @@ public class TestPage extends Activity implements OnClickListener
 		}
 		
 		QuantsTable q;
-		//if(local=="fr"){
+		
 			q = db.getQuants(j2,cat);
-		//}
-		//else{	
-		 //   q = db.getQuants(j2, cat);
-		//}
+		
 		// i=i+1;
 		String j = q.getQues();
+		
+		if(local=="fr"){
+			j= j.replaceAll("Rs.","€");
+		}
 		t1.setText(j);
 		t2.setText("   " + (j1 + 1) + "/20");
 		String opt1 = q.getOption1();
 		String opt2 = q.getOption2();
 		String opt3 = q.getOption3();
 		String opt4 = q.getOption4();
+		
+		if(local.equals(french)){
+			opt1=opt1.replaceAll("Rs.","€");
+			opt2=opt2.replaceAll("Rs.","€");
+			opt3=opt3.replaceAll("Rs.","€");
+			opt4=opt4.replaceAll("Rs.","€");
+		}
+		
+		
 
 		b1.setText(opt1);
 		b2.setText(opt2);
@@ -440,27 +451,29 @@ public class TestPage extends Activity implements OnClickListener
 
 				int val = a[click];
 				QuantsTable q;
-				//if(local=="fr"){
+				
 					q = db.getQuants(val,cat);
-				/*}
-				else{	
-					q = db.getQuants(val, cat);
-				}
-				*/
+				
+					
 				String ques = q.getQues();
 				String op1 = q.getOption1();
 				String op2 = q.getOption2();
 				String op3 = q.getOption3();
 				String op4 = q.getOption4();
 				String sol = q.getSol();
-				
-				//if(local=="fr"){
-					 db.addFav(new Favourite(ques, op1, op2, op3, op4, sol));
-				/*}
-				else{	
-					db.addFav(new Favourite(ques, op1, op2, op3, op4, sol));
+				if(local.equals(french)){
+					op1=op1.replaceAll("Rs.","€");
+					op2=op2.replaceAll("Rs.","€");
+					op3=op3.replaceAll("Rs.","€");
+					op4=op4.replaceAll("Rs.","€");
+					ques=ques.replaceAll("Rs.","€");
+					sol=sol.replaceAll("Rs.","€");
 				}
-*/
+				
+				
+					 db.addFav(new Favourite(ques, op1, op2, op3, op4, sol));
+				
+
 				Toast.makeText(getApplicationContext(), "Added To Favourite",
 						Toast.LENGTH_SHORT).show();
 
@@ -555,6 +568,17 @@ public class TestPage extends Activity implements OnClickListener
 		String opt2 = q.getOption2();
 		String opt3 = q.getOption3();
 		String opt4 = q.getOption4();
+		
+		if(local.equals(french)){
+			opt1=opt1.replaceAll("Rs.","€");
+			opt2=opt2.replaceAll("Rs.","€");
+			opt3=opt3.replaceAll("Rs.","€");
+			opt4=opt4.replaceAll("Rs.","€");
+			j=j.replaceAll("Rs.","€");
+		}
+		
+		
+		
 		t1.setText(j);
 		b1.setText(opt1);
 		b2.setText(opt2);
@@ -609,14 +633,15 @@ public class TestPage extends Activity implements OnClickListener
 					}
 					t2.setText("   " + (click + 1) + "/20");
 					QuantsTable q;
-					//if(local=="fr"){
+					
 					q = db.getQuants(val,cat);
-					/*}
-					else{	
-						q = db.getQuants(val, cat);
-					}*/
+					
 					// i=i+1;
 					String j = q.getQues();
+					if(local.equals(french)){
+						j=j.replaceAll("Rs.","€");
+					}
+					
 					t1.setText(j);
 
 					String opt1 = q.getOption1();
@@ -624,6 +649,13 @@ public class TestPage extends Activity implements OnClickListener
 					String opt3 = q.getOption3();
 					String opt4 = q.getOption4();
 					// t1.setText();
+					
+					if(local.equals(french)){
+						opt1=opt1.replaceAll("Rs.","€");
+						opt2=opt2.replaceAll("Rs.","€");
+						opt3=opt3.replaceAll("Rs.","€");
+						opt4=opt4.replaceAll("Rs.","€");
+				}
 					b1.setText(opt1);
 					b2.setText(opt2);
 					b3.setText(opt3);
@@ -671,21 +703,26 @@ public class TestPage extends Activity implements OnClickListener
 					else {
 					}
 					QuantsTable q;
-					//if(local=="fr"){
+					
 						q = db.getQuants(val,cat);
-					/*}
-					else{	
-						q = db.getQuants(val, cat);
-					}
-					*/
+					
 					// i=i+1;
 					String j = q.getQues();
+					j=j.replaceAll("Rs.","€");
 					t1.setText(j);
 					t2.setText("   " + (click + 1) + "/20");
 					String opt1 = q.getOption1();
 					String opt2 = q.getOption2();
 					String opt3 = q.getOption3();
 					String opt4 = q.getOption4();
+					
+					if(local.equals(french)){
+						
+						opt1=opt1.replaceAll("Rs.","€");
+						opt2=opt2.replaceAll("Rs.","€");
+						opt3=opt3.replaceAll("Rs.","€");
+						opt4=opt4.replaceAll("Rs.","€");
+					}
 					t1.setText(j);
 					b1.setText(opt1);
 					b2.setText(opt2);
