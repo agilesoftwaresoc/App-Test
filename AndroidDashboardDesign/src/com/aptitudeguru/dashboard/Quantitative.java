@@ -126,7 +126,7 @@ public class Quantitative extends Activity {
 
 			@Override
 			public void onClick(View view) {
-				
+						
 						String cat = "q1";
 						
 						Intent i = new Intent(getApplicationContext(), TestPage.class);

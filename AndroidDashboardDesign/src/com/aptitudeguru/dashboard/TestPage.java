@@ -2,6 +2,7 @@ package com.aptitudeguru.dashboard;
 
 import java.text.DecimalFormat;
 import java.util.List;
+import java.util.Locale;
 import java.util.Random;
 
 import android.app.Activity;
@@ -12,7 +13,6 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-
 import android.view.Gravity;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -20,7 +20,6 @@ import android.widget.Button;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-
 import android.widget.TextView;
 import android.widget.Toast;
 import androidhive.dashboard.R;
@@ -54,8 +53,10 @@ public class TestPage extends Activity implements OnClickListener
 
 	Button btn_next;
 	Button btn_prev;
-
-	DatabaseHandler db = new DatabaseHandler(this);
+	
+	String local = Locale.getDefault().toString();
+    DatabaseHandler db = new DatabaseHandler(this);
+	//DatabaseHandlerFR dbFR = new DatabaseHandlerFR(this);
 
 	// String category="7777";
 	private CountDownTimer countDownTimer;
@@ -168,8 +169,14 @@ public class TestPage extends Activity implements OnClickListener
 			b4.setChecked(true);
 		else {
 		}
-
-		QuantsTable q = db.getQuants(j2, cat);
+		
+		QuantsTable q;
+		//if(local=="fr"){
+			q = db.getQuants(j2,cat);
+		//}
+		//else{	
+		 //   q = db.getQuants(j2, cat);
+		//}
 		// i=i+1;
 		String j = q.getQues();
 		t1.setText(j);
@@ -432,15 +439,28 @@ public class TestPage extends Activity implements OnClickListener
 				// startActivity(i);
 
 				int val = a[click];
-				QuantsTable q = db.getQuants(val, cat);
+				QuantsTable q;
+				//if(local=="fr"){
+					q = db.getQuants(val,cat);
+				/*}
+				else{	
+					q = db.getQuants(val, cat);
+				}
+				*/
 				String ques = q.getQues();
 				String op1 = q.getOption1();
 				String op2 = q.getOption2();
 				String op3 = q.getOption3();
 				String op4 = q.getOption4();
 				String sol = q.getSol();
-				db.addFav(new Favourite(ques, op1, op2, op3, op4, sol));
-
+				
+				//if(local=="fr"){
+					 db.addFav(new Favourite(ques, op1, op2, op3, op4, sol));
+				/*}
+				else{	
+					db.addFav(new Favourite(ques, op1, op2, op3, op4, sol));
+				}
+*/
 				Toast.makeText(getApplicationContext(), "Added To Favourite",
 						Toast.LENGTH_SHORT).show();
 
@@ -477,7 +497,13 @@ public class TestPage extends Activity implements OnClickListener
 		// Listening to Events button click
 
 		int g = 0;
-		List<QuantsTable> quants = db.getAllQuants(cat);
+		List<QuantsTable> quants;
+		//if(local=="fr"){
+			quants = db.getAllQuants(cat);
+		/*}
+		else{	
+			quants = db.getAllQuants(cat);
+		}*/
 		for (QuantsTable cn : quants) {
 
 			if (g == 38)
@@ -514,8 +540,13 @@ public class TestPage extends Activity implements OnClickListener
 		btn_next = (Button) findViewById(R.id.btn_next);
 		btn_prev = (Button) findViewById(R.id.btn_prev);
 
-		QuantsTable q = db.getQuants(initial[count], cat);
-
+		QuantsTable q;
+		//if(local=="fr"){
+			q = db.getQuants(initial[count],cat);
+		/*}
+		else{	
+			q = db.getQuants(initial[count], cat);
+		}*/
 		a[index++] = initial[count];
 		givenans[0] = initans[count];
 		t2.setText("   " + "1/20");
@@ -577,8 +608,13 @@ public class TestPage extends Activity implements OnClickListener
 					else {
 					}
 					t2.setText("   " + (click + 1) + "/20");
-
-					QuantsTable q = db.getQuants(val, cat);
+					QuantsTable q;
+					//if(local=="fr"){
+					q = db.getQuants(val,cat);
+					/*}
+					else{	
+						q = db.getQuants(val, cat);
+					}*/
 					// i=i+1;
 					String j = q.getQues();
 					t1.setText(j);
@@ -634,8 +670,14 @@ public class TestPage extends Activity implements OnClickListener
 						b4.setChecked(true);
 					else {
 					}
-
-					QuantsTable q = db.getQuants(val, cat);
+					QuantsTable q;
+					//if(local=="fr"){
+						q = db.getQuants(val,cat);
+					/*}
+					else{	
+						q = db.getQuants(val, cat);
+					}
+					*/
 					// i=i+1;
 					String j = q.getQues();
 					t1.setText(j);

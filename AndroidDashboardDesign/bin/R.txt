@@ -669,10 +669,10 @@ int string v7 0x7f070071
 int string v8 0x7f070072
 int string v9 0x7f070073
 int string verbal 0x7f070031
-int style ActionBarCompat 0x7f080003
-int style AppBaseTheme 0x7f080002
+int style ActionBarCompat 0x7f080002
+int style AppBaseTheme 0x7f080004
 int style AppTheme 0x7f080006
-int style DashboardButton 0x7f080004
+int style DashboardButton 0x7f080003
 int style FooterBar 0x7f080005
 int style TopBar 0x7f080000
 int style TopBarItem 0x7f080001

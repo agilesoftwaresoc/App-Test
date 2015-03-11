@@ -19,7 +19,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	private static final int DATABASE_VERSION = 1;
 
 	
-	private static final String DATABASE_NAME = "aptitudedatabase";
+	private static final String DATABASE_NAME = "aptitudedatabaseFR";
+	
 
 
 	private static final String TABLE_QUANTS = "quants";

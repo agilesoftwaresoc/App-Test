@@ -7,6 +7,8 @@ import java.io.*;
 import java.util.List;
 
 
+import java.util.Locale;
+
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
@@ -14,7 +16,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
-
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -24,7 +25,9 @@ public class AndroidDashboardDesignActivity extends Activity {
 	private static final int DATABASE_VERSION = 1;
 
 	
-	private static final String DATABASE_NAME = "aptitudedatabase";
+	private static final String DATABASE_NAME = "aptitudedatabaseFR";
+	
+	String local = Locale.getDefault().toString();
 
 
 	private static final String TABLE_QUANTS = "quants";
@@ -88,7 +91,7 @@ public class AndroidDashboardDesignActivity extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.dashboard_layout);
-		DatabaseHandler db = new DatabaseHandler(this);
+		DatabaseHandlerFR db = new DatabaseHandlerFR(this);
 
 		try {
 			String datapath = "/data/data/" + getPackageName() + "/databases";
@@ -96,9 +99,18 @@ public class AndroidDashboardDesignActivity extends Activity {
 			if (!f.exists()) {
 				f.mkdirs();
 				f.createNewFile();
-
-				copydb(getBaseContext().getAssets().open("aptitudedatabase"),
-						new FileOutputStream(datapath + "/aptitudedatabase"));
+				
+				
+				
+					//if(local=="fr_"){
+						copydb(getBaseContext().getAssets().open("aptitudedatabaseFR"),
+								new FileOutputStream(datapath + "/aptitudedatabaseFR"));
+							
+				//	}else{
+					
+						//copydb(getBaseContext().getAssets().open("aptitudedatabase"),
+					//	new FileOutputStream(datapath + "/aptitudedatabase"));
+					//}
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
