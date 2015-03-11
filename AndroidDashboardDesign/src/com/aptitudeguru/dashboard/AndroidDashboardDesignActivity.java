@@ -100,7 +100,7 @@ public class AndroidDashboardDesignActivity extends Activity {
 				f.mkdirs();
 				f.createNewFile();
 				
-				
+				//test
 				
 					//if(local=="fr_"){
 						copydb(getBaseContext().getAssets().open("aptitudedatabaseFR"),
