@@ -102,16 +102,12 @@ public class AndroidDashboardDesignActivity extends Activity {
 				
 				//test
 				
-					//if(local=="fr_"){
-						copydb(getBaseContext().getAssets().open("aptitudedatabaseFR"),
-								new FileOutputStream(datapath + "/aptitudedatabaseFR"));
-							
-				//	}else{
-					
-						//copydb(getBaseContext().getAssets().open("aptitudedatabase"),
-					//	new FileOutputStream(datapath + "/aptitudedatabase"));
-					//}
+					if(local=="fr_"){
+						copydb(getBaseContext().getAssets().open("aptitudedatabase"),
+								new FileOutputStream(datapath + "/aptitudedatabase"));
+					}
 			}
+				
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
