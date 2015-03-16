@@ -284,9 +284,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	void addFav(Favourite q) {
 		SQLiteDatabase db = this.getWritableDatabase();
 
-		ContentValues values = new ContentValues();
+		ContentValues values = new ContentValues()
+;
 		values.put(KEY_FAVOURITEQUES, q.getQues()); // Contact Name
-
 		values.put(KEY_OPTION1, q.getOption1());
 		values.put(KEY_OPTION2, q.getOption2());
 		values.put(KEY_OPTION3, q.getOption3());
@@ -527,7 +527,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
 	}
 
-	QuantsTable getQuants(int id) {
+	public QuantsTable getQuants(int id) {
 		SQLiteDatabase db = this.getReadableDatabase();
 		Cursor cursor = db.query(TABLE_QUANTS, new String[] { KEY_QUANTSID,
 				KEY_QUANTSQUES, KEY_QUANTSCAT, KEY_OPTION1, KEY_OPTION2,
