@@ -37,8 +37,13 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	private static final String TABLE_FAVOURITE = "favourite";
 	private static final String TABLE_SBTABLE = "sbtable";
 	private static final String TABLE_PUZZLETABLE = "PuzzleTable";
-
-
+	
+	//situationalDatabase
+	private static final String TABLE_SITJUDGE = "sittable";
+	private static final String KEY_SITID = "sitid";
+	private static final String KEY_SITSOL = "sitsol";
+	private static final String KEY_SITQUES = "sitques";
+	
 	private static final String KEY_PUZZLEID = "puzzleid";
 	private static final String KEY_PUZZLEQUES = "puzzleques";
 	private static final String KEY_PUZZLESOL = "sol";
@@ -51,7 +56,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	private static final String KEY_SBSCORE = "sbscore";
 	private static final String KEY_SBTT = "sbtt";
 
-	
+		
 	private static final String KEY_QUANTSID = "quantsid";
 	private static final String KEY_QUANTSQUES = "quantsques";
 	private static final String KEY_QUANTSCAT = "quantscat";
@@ -120,6 +125,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	// private static final String KEY_HTMLCAT = "htmlcat";
 	private static final String KEY_FAVOURITESOL = "sol";
 
+
 	public DatabaseHandler(Context context) {
 		super(context, DATABASE_NAME, null, DATABASE_VERSION);
 	}
@@ -174,6 +180,11 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 				+ KEY_OPTION3 + " TEXT," + KEY_OPTION4 + " TEXT," + KEY_DBMSSOL
 				+ " TEXT" + ")";
 
+		String CREATE_SITJUDGE_TABLE = "CREATE TABLE" + TABLE_SITJUDGE + "(" + KEY_SITID
+				+ " INTEGER PRIMARY KEY," + KEY_SITQUES + "TEXT,"
+				+ KEY_SITSOL + "TEXT" + ")";
+		
+				
 		String CREATE_DSA_TABLE = "CREATE TABLE " + TABLE_DSA + "(" + KEY_DSAID
 				+ " INTEGER PRIMARY KEY," + KEY_DSAQUES + " TEXT,"
 				+ KEY_OPTION1 + " TEXT," + KEY_OPTION2 + " TEXT," + KEY_OPTION3
@@ -212,6 +223,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		db.execSQL(CREATE_FAVOURITE_TABLE);
 		db.execSQL(CREATE_SBTABLE_TABLE);
 		db.execSQL(CREATE_PUZZLE_TABLE);
+		db.execSQL(CREATE_SITJUDGE_TABLE);
 	}
 
 	// Upgrading database
@@ -231,6 +243,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		db.execSQL("DROP TABLE IF EXISTS " + TABLE_FAVOURITE);
 		db.execSQL("DROP TABLE IF EXISTS " + TABLE_SBTABLE);
 		db.execSQL("DROP TABLE IF EXISTS " + TABLE_PUZZLETABLE);
+		db.execSQL("DROP TABLE IF EXISTS " + TABLE_SITJUDGE);
+		
 		// Create tables again
 		onCreate(db);
 
@@ -256,6 +270,18 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		db.insert(TABLE_PUZZLETABLE, null, values);
 		
 		db.close(); // Closing database connection
+	}
+	//Adding new Sit Judge Table
+	void addSit(SitTable q)
+	{
+		SQLiteDatabase db = this.getWritableDatabase();
+		
+		ContentValues values = new ContentValues();
+		values.put(KEY_SITQUES, q.getQues());
+		values.put(KEY_SITSOL, q.getSol());
+		
+		db.insert(TABLE_SITJUDGE,  null, values);
+		db.close();
 	}
 
 	// Adding new SCORE TABLE(SBTABLE)
@@ -284,9 +310,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	void addFav(Favourite q) {
 		SQLiteDatabase db = this.getWritableDatabase();
 
-		ContentValues values = new ContentValues()
-;
+		ContentValues values = new ContentValues();
 		values.put(KEY_FAVOURITEQUES, q.getQues()); // Contact Name
+
 		values.put(KEY_OPTION1, q.getOption1());
 		values.put(KEY_OPTION2, q.getOption2());
 		values.put(KEY_OPTION3, q.getOption3());
@@ -527,7 +553,31 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
 	}
 
-	public QuantsTable getQuants(int id) {
+	// Need to check this later
+	SitTable getSit(int id)
+	{
+		
+	SQLiteDatabase db = this.getReadableDatabase();
+	Cursor cursor = db.query(TABLE_SITJUDGE, new String[] { KEY_SITID,
+			KEY_SITQUES, KEY_SITSOL}, KEY_SITID + "=?", new String[]
+					{ String.valueOf(id) }, null, null, null);
+	
+	if (cursor != null)
+		cursor.moveToFirst();
+	
+	SitTable sits = new SitTable(Integer.parseInt(cursor
+			.getString(0)), cursor.getString(1), cursor.getString(2),
+			cursor.getString(3));
+	
+	db.close();
+	return sits;
+	
+	}
+	
+			
+			
+
+	QuantsTable getQuants(int id) {
 		SQLiteDatabase db = this.getReadableDatabase();
 		Cursor cursor = db.query(TABLE_QUANTS, new String[] { KEY_QUANTSID,
 				KEY_QUANTSQUES, KEY_QUANTSCAT, KEY_OPTION1, KEY_OPTION2,
@@ -546,6 +596,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		return quants;
 
 	}
+	
 
 	// Getting single c language
 	CTable getC(int id) {
@@ -893,6 +944,35 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		db.close();
 		return quantsList;
 	}
+	
+	//
+	public List<SitTable> getAllSits() 
+	{
+		List<SitTable> sitList = new ArrayList<SitTable>();
+		//Select All Query
+		
+		String selectQuery = "SELECT * FROM " + TABLE_SITJUDGE;
+		
+		SQLiteDatabase db = this.getWritableDatabase();
+		Cursor cursor = db.rawQuery(selectQuery, null);
+		
+		if (cursor.moveToFirst())
+		{
+			do {
+				
+				SitTable sits = new SitTable();
+				sits.setID(Integer.parseInt(cursor.getString(0)));
+				sits.setQues(cursor.getString(1));
+				sits.setSol(cursor.getString(2));
+				
+			} while (cursor.moveToNext());
+		}
+		
+		db.close();
+		return sitList;
+			}
+		
+	
 
 	public List<QuantsTable> getAllQuants() {
 		List<QuantsTable> quantsList = new ArrayList<QuantsTable>();
@@ -1364,6 +1444,20 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		return db.update(TABLE_QUANTS, values, KEY_QUANTSID + " = ?",
 				new String[] { String.valueOf(quants.getID()) });
 	}
+	
+	// Updating single Sits
+	public int updateSits(SitTable sits)
+	{
+		SQLiteDatabase db = this.getWritableDatabase();
+		
+		ContentValues values = new ContentValues();
+		values.put(KEY_SITQUES, sits.getQues());
+		values.put(KEY_SITSOL, sits.getSol());
+		
+		return db.update(TABLE_SITJUDGE, values, KEY_SITID + " = ?",
+				new String[] { String.valueOf(sits.getID()) } );
+				
+	}
 
 	// Updating single C Language
 	public int updateC(CTable c) {
@@ -1516,6 +1610,14 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 				new String[] { String.valueOf(quants.getID()) });
 		db.close();
 	}
+	
+	public void deleteSits(SitTable sits)
+	{
+		SQLiteDatabase db = this.getWritableDatabase();
+		db.delete(TABLE_SITJUDGE, KEY_SITID + " = ?",
+		new String[] { String.valueOf(sits.getID()) } );
+		db.close();
+	}
 
 	// Deleting single clang
 	public void deleteC(CTable c) {
@@ -1604,6 +1706,17 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
 		// return count
 		return cursor.getCount();
+	}
+	
+	//Check This later
+	public int getSitsCount()
+	{
+		String countQuery = "SELECT * FROM " + TABLE_SITJUDGE;
+		SQLiteDatabase db = this.getReadableDatabase();
+		Cursor cursor = db.rawQuery(countQuery, null);
+		cursor.close();
+		return cursor.getCount();
+		
 	}
 
 	// Getting c lang count
