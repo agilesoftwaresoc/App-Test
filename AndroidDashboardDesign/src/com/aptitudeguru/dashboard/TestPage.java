@@ -55,10 +55,11 @@ public class TestPage extends Activity implements OnClickListener
 	Button btn_prev;
 	
 	String local = Locale.getDefault().toString();
-	String french ="fr_FR";
+	String france ="fr_FR";
+	String uk = "en_GB";
+	String us = "en_US";
     DatabaseHandler db = new DatabaseHandler(this);
-	//DatabaseHandlerFR dbFR = new DatabaseHandlerFR(this);
-
+	
 	// String category="7777";
 	private CountDownTimer countDownTimer;
 	private CountDownTimer countDownTimer1;
@@ -176,10 +177,23 @@ public class TestPage extends Activity implements OnClickListener
 			q = db.getQuants(j2,cat);
 		
 		// i=i+1;
-		String j = q.getQues();
+		 String j = q.getQues();
 		
-		if(local=="fr"){
+		if(local.equals(france)){
 			j= j.replaceAll("Rs.","€");
+		}
+		else if(local.equals(us)){
+			j=j.replaceAll("Rs.","\\$");
+		}
+		else{
+			j=j.replaceAll("Rs.", "£");
+		}
+		if(local!=france){
+			j=j.replaceAll("kmph", "mph");
+			j=j.replaceAll("km/hr", "mph");
+			j=j.replaceAll("km", "miles");
+			j=j.replaceAll("kg", "lb");
+			j=j.replaceAll("m", "yards");
 		}
 		t1.setText(j);
 		t2.setText("   " + (j1 + 1) + "/20");
@@ -188,13 +202,42 @@ public class TestPage extends Activity implements OnClickListener
 		String opt3 = q.getOption3();
 		String opt4 = q.getOption4();
 		
-		if(local.equals(french)){
+		if(local.equals(france)){
 			opt1=opt1.replaceAll("Rs.","€");
 			opt2=opt2.replaceAll("Rs.","€");
 			opt3=opt3.replaceAll("Rs.","€");
 			opt4=opt4.replaceAll("Rs.","€");
 		}
-		
+		else if(local.equals(us)){
+			opt1=opt1.replaceAll("Rs.","\\$");
+			opt2=opt2.replaceAll("Rs.","\\$");
+			opt3=opt3.replaceAll("Rs.","\\$");
+			opt4=opt4.replaceAll("Rs.","\\$");
+		}
+		else{
+			opt1=opt1.replaceAll("Rs.","£");
+			opt2=opt2.replaceAll("Rs.","£");
+			opt3=opt3.replaceAll("Rs.","£");
+			opt4=opt4.replaceAll("Rs.","£");	
+		}
+		if(local!=france){
+			opt1=opt1.replaceAll("kmph","mph");
+			opt2=opt2.replaceAll("kmph","mph");
+			opt3=opt3.replaceAll("kmph","mph");
+			opt4=opt4.replaceAll("kmph","mph");
+			opt1=opt1.replaceAll("km/hr","mph");
+			opt2=opt2.replaceAll("km/hr","mph");
+			opt3=opt3.replaceAll("km/hr","mph");
+			opt4=opt4.replaceAll("km/hr","mph");
+			opt1=opt1.replaceAll("km","miles");
+			opt2=opt2.replaceAll("km","miles");
+			opt3=opt3.replaceAll("km","miles");
+			opt4=opt4.replaceAll("km","miles");
+			opt1=opt1.replaceAll("kg","lb");
+			opt2=opt2.replaceAll("kg","lb");
+			opt3=opt3.replaceAll("kg","lb");
+			opt4=opt4.replaceAll("kg","lb");
+		}
 		
 
 		b1.setText(opt1);
@@ -461,7 +504,7 @@ public class TestPage extends Activity implements OnClickListener
 				String op3 = q.getOption3();
 				String op4 = q.getOption4();
 				String sol = q.getSol();
-				if(local.equals(french)){
+				if(local.equals(france)){
 					op1=op1.replaceAll("Rs.","€");
 					op2=op2.replaceAll("Rs.","€");
 					op3=op3.replaceAll("Rs.","€");
@@ -469,8 +512,49 @@ public class TestPage extends Activity implements OnClickListener
 					ques=ques.replaceAll("Rs.","€");
 					sol=sol.replaceAll("Rs.","€");
 				}
+				else if(local.equals(us)){
+				op1=op1.replaceAll("Rs.","\\$");
+				op2=op2.replaceAll("Rs.","\\$");
+				op3=op3.replaceAll("Rs.","\\$");
+				op4=op4.replaceAll("Rs.","\\$");
+				ques=ques.replaceAll("Rs.","\\$");
+				sol=sol.replaceAll("Rs.","\\$");
 				
+			   }else{
+				op1=op1.replaceAll("Rs.","£");
+				op2=op2.replaceAll("Rs.","£");
+				op3=op3.replaceAll("Rs.","£");
+				op4=op4.replaceAll("Rs.","£");
+				ques=ques.replaceAll("Rs.","£");
+				sol=sol.replaceAll("Rs.","£");
+			   }
 				
+			   if(local!=france){
+				   	op1=op1.replaceAll("kmph","mph");
+					op1=op1.replaceAll("kmph","mph");
+					op3=op3.replaceAll("kmph","mph");
+					op4=op4.replaceAll("kmph","mph");
+					ques=ques.replaceAll("kmph","mph");
+					sol=sol.replaceAll("kmph","mph");
+				   	op1=op1.replaceAll("km/hr","mph");
+					op1=op1.replaceAll("km/hr","mph");
+					op3=op3.replaceAll("km/hr","mph");
+					op4=op4.replaceAll("km/hr","mph");
+					ques=ques.replaceAll("km/hr","mph");
+					sol=sol.replaceAll("km/hr","mph");
+					op1=op1.replaceAll("km","miles");
+					op2=op2.replaceAll("km","miles");
+					op3=op3.replaceAll("km","miles");
+					op4=op4.replaceAll("km","miles");
+					ques= ques.replaceAll("km", "miles");
+					sol = sol.replaceAll("km", "miles");
+					op1=op1.replaceAll("kg","lb");
+					op2=op2.replaceAll("kg","lb");
+					op3=op3.replaceAll("kg","lb");
+					op4=op4.replaceAll("kg","lb");
+					ques = ques.replaceAll("kg", "lb");
+					sol = sol.replaceAll("kg","lb");
+			   }
 					 db.addFav(new Favourite(ques, op1, op2, op3, op4, sol));
 				
 
@@ -569,7 +653,7 @@ public class TestPage extends Activity implements OnClickListener
 		String opt3 = q.getOption3();
 		String opt4 = q.getOption4();
 		
-		if(local.equals(french)){
+		if(local.equals(france)){
 			opt1=opt1.replaceAll("Rs.","€");
 			opt2=opt2.replaceAll("Rs.","€");
 			opt3=opt3.replaceAll("Rs.","€");
@@ -577,8 +661,43 @@ public class TestPage extends Activity implements OnClickListener
 			j=j.replaceAll("Rs.","€");
 		}
 		
+		else if(local.equals(us)){
+			opt1=opt1.replaceAll("Rs.","\\$");
+			opt2=opt2.replaceAll("Rs.","\\$");
+			opt3=opt3.replaceAll("Rs.","\\$");
+			opt4=opt4.replaceAll("Rs.","\\$");
+			j=j.replaceAll("Rs.", "\\$");
+		}
+		else{
+			opt1=opt1.replaceAll("Rs.","£");
+			opt2=opt2.replaceAll("Rs.","£");
+			opt3=opt3.replaceAll("Rs.","£");
+			opt4=opt4.replaceAll("Rs.","£");
+			j=j.replaceAll("Rs.","£");
+		}
 		
-		
+		if(local!=france){
+			opt1=opt1.replaceAll("kmph","mph");
+			opt2=opt2.replaceAll("kmph","mph");
+			opt3=opt3.replaceAll("kmph","mph");
+			opt4=opt4.replaceAll("kmph","mph");
+			j=j.replaceAll("kmph", "mph");
+			opt1=opt1.replaceAll("km/hr","mph");
+			opt2=opt2.replaceAll("km/hr","mph");
+			opt3=opt3.replaceAll("km/hr","mph");
+			opt4=opt4.replaceAll("km/hr","mph");
+			j=j.replaceAll("km/hr", "mph");
+			opt1=opt1.replaceAll("km","miles");
+			opt2=opt2.replaceAll("km","miles");
+			opt3=opt3.replaceAll("km","miles");
+			opt4=opt4.replaceAll("km","miles");
+			j=j.replaceAll("km","miles");
+			opt1=opt1.replaceAll("kg","lb");
+			opt2=opt2.replaceAll("kg","lb");
+			opt3=opt3.replaceAll("kg","lb");
+			opt4=opt4.replaceAll("kg","lb");
+			j=j.replaceAll("kg","lb");
+		}
 		t1.setText(j);
 		b1.setText(opt1);
 		b2.setText(opt2);
@@ -638,10 +757,22 @@ public class TestPage extends Activity implements OnClickListener
 					
 					// i=i+1;
 					String j = q.getQues();
-					if(local.equals(french)){
+					if(local.equals(france)){
 						j=j.replaceAll("Rs.","€");
 					}
-					
+					else if(local.equals(us)){
+						j=j.replaceAll("Rs.", "\\$");
+					}
+					else {	
+						j=j.replaceAll("Rs.", "£");
+						
+					}
+					if(local!=france){
+						j=j.replaceAll("kmph", "mph");
+						j=j.replaceAll("km/hr", "mph");
+						j=j.replaceAll("km","miles");
+						j=j.replaceAll("kg","lb");
+					}
 					t1.setText(j);
 
 					String opt1 = q.getOption1();
@@ -649,21 +780,50 @@ public class TestPage extends Activity implements OnClickListener
 					String opt3 = q.getOption3();
 					String opt4 = q.getOption4();
 					// t1.setText();
-					
-					if(local.equals(french)){
+					if(local.equals(france)){
 						opt1=opt1.replaceAll("Rs.","€");
 						opt2=opt2.replaceAll("Rs.","€");
 						opt3=opt3.replaceAll("Rs.","€");
 						opt4=opt4.replaceAll("Rs.","€");
-				}
+					}
+					else if(local.equals(us)){
+						opt1=opt1.replaceAll("Rs.","\\$");
+						opt2=opt2.replaceAll("Rs.","\\$");
+						opt3=opt3.replaceAll("Rs.","\\$");
+						opt4=opt4.replaceAll("Rs.","\\$");
+					}
+					else{
+						opt1=opt1.replaceAll("Rs.","£");
+						opt2=opt2.replaceAll("Rs.","£");
+						opt3=opt3.replaceAll("Rs.","£");
+						opt4=opt4.replaceAll("Rs.","£");
+					}
+					
+					if(local!=france){
+						opt1=opt1.replaceAll("kmph","mph");
+						opt2=opt2.replaceAll("kmph","mph");
+						opt3=opt3.replaceAll("kmph","mph");
+						opt4=opt4.replaceAll("kmph","mph");
+						opt1=opt1.replaceAll("km/hr","mph");
+						opt2=opt2.replaceAll("km/hr","mph");
+						opt3=opt3.replaceAll("km/hr","mph");
+						opt4=opt4.replaceAll("km/hr","mph");
+						opt1=opt1.replaceAll("km","miles");
+						opt2=opt2.replaceAll("km","miles");
+						opt3=opt3.replaceAll("km","miles");
+						opt4=opt4.replaceAll("km","miles");
+						opt1=opt1.replaceAll("kg","lb");
+						opt2=opt2.replaceAll("kg","lb");
+						opt3=opt3.replaceAll("kg","lb");
+						opt4=opt4.replaceAll("kg","lb");
+					
+					}
 					b1.setText(opt1);
 					b2.setText(opt2);
 					b3.setText(opt3);
 					b4.setText(opt4);
 					// radiogroup.setOnCheckedChangeListener(this);
-
 				}
-
 			}
 		});
 		// prev
@@ -708,7 +868,21 @@ public class TestPage extends Activity implements OnClickListener
 					
 					// i=i+1;
 					String j = q.getQues();
-					j=j.replaceAll("Rs.","€");
+					if(local.equals(france)){
+						j=j.replaceAll("Rs.","€");
+					}
+					else if(local.equals(us)){
+						j=j.replaceAll("Rs.", "\\$");
+					}
+					else{
+						j=j.replaceAll("Rs.", "£");
+					}
+					if(local!=france){
+						j=j.replaceAll("kmph", "mph");
+						j=j.replaceAll("km/hr", "mph");
+						j=j.replaceAll("km","miles");
+						j=j.replaceAll("kg","lb");
+					}
 					t1.setText(j);
 					t2.setText("   " + (click + 1) + "/20");
 					String opt1 = q.getOption1();
@@ -716,12 +890,42 @@ public class TestPage extends Activity implements OnClickListener
 					String opt3 = q.getOption3();
 					String opt4 = q.getOption4();
 					
-					if(local.equals(french)){
-						
+					if(local.equals(france)){
 						opt1=opt1.replaceAll("Rs.","€");
 						opt2=opt2.replaceAll("Rs.","€");
 						opt3=opt3.replaceAll("Rs.","€");
 						opt4=opt4.replaceAll("Rs.","€");
+					}
+					else if(local.equals(us)){
+						opt1=opt1.replaceAll("Rs.","\\$");
+						opt2=opt2.replaceAll("Rs.","\\$");
+						opt3=opt3.replaceAll("Rs.","\\$");
+						opt4=opt4.replaceAll("Rs.","\\$");
+					}
+					else{
+						opt1=opt1.replaceAll("Rs.","£");
+						opt2=opt2.replaceAll("Rs.","£");
+						opt3=opt3.replaceAll("Rs.","£");
+						opt4=opt4.replaceAll("Rs.","£");
+					}
+					
+					if(local!=france){
+						opt1=opt1.replaceAll("kmph","mph");
+						opt2=opt2.replaceAll("kmph","mph");
+						opt3=opt3.replaceAll("kmph","mph");
+						opt4=opt4.replaceAll("kmph","mph");
+						opt1=opt1.replaceAll("km/hr","mph");
+						opt2=opt2.replaceAll("km/hr","mph");
+						opt3=opt3.replaceAll("km/hr","mph");
+						opt4=opt4.replaceAll("km/hr","mph");
+						opt1=opt1.replaceAll("km","miles");
+						opt2=opt2.replaceAll("km","miles");
+						opt3=opt3.replaceAll("km","miles");
+						opt4=opt4.replaceAll("km","miles");
+						opt1=opt1.replaceAll("kg","lb");
+						opt2=opt2.replaceAll("kg","lb");
+						opt3=opt3.replaceAll("kg","lb");
+						opt4=opt4.replaceAll("kg","lb");
 					}
 					t1.setText(j);
 					b1.setText(opt1);
@@ -829,6 +1033,11 @@ public class TestPage extends Activity implements OnClickListener
 
 		}
 
+	}
+	
+	public String getLocal(){
+			return local;
+	
 	}
 
 }

@@ -91,7 +91,7 @@ public class AndroidDashboardDesignActivity extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.dashboard_layout);
-		DatabaseHandlerFR db = new DatabaseHandlerFR(this);
+		DatabaseHandler db = new DatabaseHandler(this);
 
 		try {
 			String datapath = "/data/data/" + getPackageName() + "/databases";
@@ -99,15 +99,9 @@ public class AndroidDashboardDesignActivity extends Activity {
 			if (!f.exists()) {
 				f.mkdirs();
 				f.createNewFile();
-				
-				//test
-				
-					if(local=="fr"){
+		
 						copydb(getBaseContext().getAssets().open("aptitudedatabase"),
 								new FileOutputStream(datapath + "/aptitudedatabase"));
-					}
-					else{
-					}
 					
 			}
 				
@@ -130,6 +124,7 @@ public class AndroidDashboardDesignActivity extends Activity {
 	
 		Button btn_about = (Button) findViewById(R.id.btn_about);
 		 Button btn_help = (Button) findViewById(R.id.btn_help);
+		
   		
   		btn_help.setOnClickListener(new View.OnClickListener() {
 
@@ -214,6 +209,8 @@ public class AndroidDashboardDesignActivity extends Activity {
 
 		
 		Button btn_allinone = (Button) findViewById(R.id.btn_allinone);
+		
+		Button btn_sj = (Button) findViewById(R.id.btn_sj);
 
 		
 		btn_quants.setOnClickListener(new View.OnClickListener() {
@@ -282,6 +279,17 @@ public class AndroidDashboardDesignActivity extends Activity {
 				startActivity(i);
 			}
 		});
+		
+		btn_sj.setOnClickListener(new View.OnClickListener(){
+			
+			@Override
+			public void onClick(View view) {
+				
+				Intent i = new Intent(getApplicationContext(), AllInOne.class);
+				startActivity(i);
+			}
+		});
+		
 
 		
 		//

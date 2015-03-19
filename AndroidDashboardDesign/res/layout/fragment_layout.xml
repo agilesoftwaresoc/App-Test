@@ -11,6 +11,12 @@
         style="@style/DashboardButton"
         android:drawableTop="@drawable/quants"
         android:text="@string/quants" />
+    
+    <Button
+        android:id="@+id/btn_sj"
+        style="@style/DashboardButton"
+        android:drawableTop="@drawable/cpp1"
+        android:text="@string/sj" />
 
     <!-- Friends Button -->
 
@@ -41,6 +47,8 @@
         android:text="Computer\nFundamentals" />
 
     <!-- Events Button -->
+    
+    
 
 
     <!-- Photos Button -->
