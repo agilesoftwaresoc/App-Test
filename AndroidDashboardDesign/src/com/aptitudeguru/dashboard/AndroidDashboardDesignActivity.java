@@ -215,6 +215,8 @@ public class AndroidDashboardDesignActivity extends Activity {
 		
 		Button btn_allinone = (Button) findViewById(R.id.btn_allinone);
 
+		Button btn_langchange = (Button) findViewById(R.id.btn_langchange);
+		Button btn_sitjudge = (Button) findViewById(R.id.btn_sitjudge);
 		
 		btn_quants.setOnClickListener(new View.OnClickListener() {
 
@@ -282,21 +284,31 @@ public class AndroidDashboardDesignActivity extends Activity {
 				startActivity(i);
 			}
 		});
-
 		
-		//
-	//db.addClanguage(new CTable("Which of the following is the correct order of evaluation for the below expression?z = x + y * z / 4 % 2 - 1","c3","* / % + - =","	= * / % + -","	/ * % - + =	D.	* % / - + =","A"));
-
-		//	db.addClanguage(new CTable("Which of the following correctly shows the hierarchy of arithmetic operations in C?","c4","	/ + * -	","	* - / ","	+ - / *	","/ * + -","D"));
-
-			//	db.addClanguage(new CTable("Which of the following is the correct usage of conditional operators used in C?","c4","a>b ? c=30 : c=40;","	a>b ? c=30;","max = a>b ? a>c?a:c:b>c?b:c","return (a>b)?(a:b)","C"));
-
-		//db.addClanguage(new CTable("Which of the following is the correct order if calling functions in the below code?a = f1(23, 14) * f2(12/4) + f3();","c4","f1, f2, f3","f3, f2, f1","Order may vary from compiler to compiler","None of above","C"));
-
-		//	db.addClanguage(new CTable("Which of the following are unary operators in C?1.	!  2.	sizeof  3.	~  4.	&&","c4","	1, 2","	1, 3","2, 4	","1, 2, 3","D"));
-	
+	btn_sitjudge.setOnClickListener(new View.OnClickListener()
+		{
+			@Override
+			public void onClick(View view)
+			{
+				Intent i = new Intent(getApplicationContext(), TestSit.class);
+				startActivity(i);
+				
+			}
+		});
+		
+		
+		btn_langchange.setOnClickListener(new View.OnClickListener()
+		{
 			
-		
+		  
+		  @Override
+		  public void onClick(View view)
+		  {
+			  Intent i = new Intent(getApplicationContext(), TestSit.class);
+			  startActivity(i);
+		  }
+		});
+		 
 
-	}
+		}
 }

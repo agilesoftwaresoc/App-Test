@@ -37,9 +37,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	private static final String TABLE_FAVOURITE = "favourite";
 	private static final String TABLE_SBTABLE = "sbtable";
 	private static final String TABLE_PUZZLETABLE = "PuzzleTable";
+	private static final String TABLE_SITTEST = "sittest";
 	
-	//situationalDatabase
-	private static final String TABLE_SITJUDGE = "sittable";
+	
 	private static final String KEY_SITID = "sitid";
 	private static final String KEY_SITSOL = "sitsol";
 	private static final String KEY_SITQUES = "sitques";
@@ -180,9 +180,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 				+ KEY_OPTION3 + " TEXT," + KEY_OPTION4 + " TEXT," + KEY_DBMSSOL
 				+ " TEXT" + ")";
 
-		String CREATE_SITJUDGE_TABLE = "CREATE TABLE" + TABLE_SITJUDGE + "(" + KEY_SITID
-				+ " INTEGER PRIMARY KEY," + KEY_SITQUES + "TEXT,"
-				+ KEY_SITSOL + "TEXT" + ")";
+		String CREATE_SITTABLE_TABLE = "CREATE TABLE " + TABLE_SITTEST + "(" + KEY_SITID 
+				+ " INTEGER PRIMARY KEY," + KEY_SITQUES + " TEXT," + KEY_SITSOL +" TEXT" + ")";
 		
 				
 		String CREATE_DSA_TABLE = "CREATE TABLE " + TABLE_DSA + "(" + KEY_DSAID
@@ -209,7 +208,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		String CREATE_PUZZLE_TABLE = "CREATE TABLE " + TABLE_PUZZLETABLE + "("
 				+ KEY_PUZZLEID + " INTEGER PRIMARY KEY," + KEY_PUZZLEQUES
 				+ " TEXT," + KEY_PUZZLESOL + " TEXT" + ")";
-
+		
+		db.execSQL("DROP TABLE IF EXISTS " + TABLE_SITTEST);
+		
+		db.execSQL(CREATE_SITTABLE_TABLE);
 		db.execSQL(CREATE_QUANTS_TABLE);
 		db.execSQL(CREATE_CLANGUAGE_TABLE);
 		db.execSQL(CREATE_CPPLANGUAGE_TABLE);
@@ -223,7 +225,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		db.execSQL(CREATE_FAVOURITE_TABLE);
 		db.execSQL(CREATE_SBTABLE_TABLE);
 		db.execSQL(CREATE_PUZZLE_TABLE);
-		db.execSQL(CREATE_SITJUDGE_TABLE);
+		
 	}
 
 	// Upgrading database
@@ -243,7 +245,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		db.execSQL("DROP TABLE IF EXISTS " + TABLE_FAVOURITE);
 		db.execSQL("DROP TABLE IF EXISTS " + TABLE_SBTABLE);
 		db.execSQL("DROP TABLE IF EXISTS " + TABLE_PUZZLETABLE);
-		db.execSQL("DROP TABLE IF EXISTS " + TABLE_SITJUDGE);
+		db.execSQL("DROP TABLE IF EXISTS " + TABLE_SITTEST);
 		
 		// Create tables again
 		onCreate(db);
@@ -280,7 +282,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		values.put(KEY_SITQUES, q.getQues());
 		values.put(KEY_SITSOL, q.getSol());
 		
-		db.insert(TABLE_SITJUDGE,  null, values);
+		db.insert(TABLE_SITTEST,  null, values);
 		db.close();
 	}
 
@@ -558,7 +560,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	{
 		
 	SQLiteDatabase db = this.getReadableDatabase();
-	Cursor cursor = db.query(TABLE_SITJUDGE, new String[] { KEY_SITID,
+	Cursor cursor = db.query(TABLE_SITTEST, new String[] { KEY_SITID,
 			KEY_SITQUES, KEY_SITSOL}, KEY_SITID + "=?", new String[]
 					{ String.valueOf(id) }, null, null, null);
 	
@@ -566,8 +568,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		cursor.moveToFirst();
 	
 	SitTable sits = new SitTable(Integer.parseInt(cursor
-			.getString(0)), cursor.getString(1), cursor.getString(2),
-			cursor.getString(3));
+			.getString(0)), cursor.getString(1), cursor.getString(2));
 	
 	db.close();
 	return sits;
@@ -951,7 +952,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		List<SitTable> sitList = new ArrayList<SitTable>();
 		//Select All Query
 		
-		String selectQuery = "SELECT * FROM " + TABLE_SITJUDGE;
+		String selectQuery = "SELECT * FROM " + TABLE_SITTEST;
 		
 		SQLiteDatabase db = this.getWritableDatabase();
 		Cursor cursor = db.rawQuery(selectQuery, null);
@@ -1454,7 +1455,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		values.put(KEY_SITQUES, sits.getQues());
 		values.put(KEY_SITSOL, sits.getSol());
 		
-		return db.update(TABLE_SITJUDGE, values, KEY_SITID + " = ?",
+		return db.update(TABLE_SITTEST, values, KEY_SITID + " = ?",
 				new String[] { String.valueOf(sits.getID()) } );
 				
 	}
@@ -1614,7 +1615,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	public void deleteSits(SitTable sits)
 	{
 		SQLiteDatabase db = this.getWritableDatabase();
-		db.delete(TABLE_SITJUDGE, KEY_SITID + " = ?",
+		db.delete(TABLE_SITTEST, KEY_SITID + " = ?",
 		new String[] { String.valueOf(sits.getID()) } );
 		db.close();
 	}
@@ -1711,7 +1712,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	//Check This later
 	public int getSitsCount()
 	{
-		String countQuery = "SELECT * FROM " + TABLE_SITJUDGE;
+		String countQuery = "SELECT * FROM " + TABLE_SITTEST;
 		SQLiteDatabase db = this.getReadableDatabase();
 		Cursor cursor = db.rawQuery(countQuery, null);
 		cursor.close();

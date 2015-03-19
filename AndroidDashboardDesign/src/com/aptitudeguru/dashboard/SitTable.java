@@ -5,7 +5,6 @@ public class SitTable {
 	
 	int _sitid;
 	String _sitques;
-	String _sitcat;
 	
 	String _sol;
 
@@ -15,18 +14,18 @@ public class SitTable {
 	}
 
 	
-	public SitTable(int sitid, String sitques, String sitcat,
+	public SitTable(int sitid, String sitques,
 			String sol) {
 		this._sitid = sitid;
 		this._sitques = sitques;
-		this._sitcat = sitcat;
+	
 		this._sol = sol;
 	}
 
-	public SitTable(String sitques, String sitcat, String sol) {
+	public SitTable(String sitques, String sol) {
 
 		this._sitques = sitques;
-		this._sitcat = sitcat;
+		
 
 		this._sol = sol;
 	}
@@ -49,16 +48,6 @@ public class SitTable {
 	
 	public void setQues(String sitques) {
 		this._sitques = sitques;
-	}
-
-	
-	public String getCat() {
-		return this._sitcat;
-	}
-
-	
-	public void setCat(String sitcat) {
-		this._sitcat = sitcat;
 	}
 
 	public String getSol() {

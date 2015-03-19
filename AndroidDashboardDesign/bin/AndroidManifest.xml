@@ -362,6 +362,7 @@
              android:theme="@android:style/Theme.Dialog"
             android:screenOrientation="portrait" >
         </activity>
+         <activity android:theme="@style/AppTheme" android:name="com.aptitudeguru.dashboard.TestSit" android:finishOnTaskLaunch="false"></activity>
         
     </application>
 

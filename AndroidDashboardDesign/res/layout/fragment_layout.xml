@@ -51,4 +51,16 @@
         android:drawableTop="@drawable/allinone"
         android:text="@string/allinone" />
 
+    <Button
+        android:id="@+id/btn_sitjudge"
+        style="@style/DashboardButton"
+        android:drawableTop="@drawable/sitjudge"
+        android:text="Situational Judgement" />
+
+    <Button
+        android:id="@+id/btn_langchange"
+        style="@style/DashboardButton"
+        android:drawableTop="@drawable/changelang"
+        android:text="Change Language" />
+
 </com.aptitudeguru.dashboard.DashboardLayout>
