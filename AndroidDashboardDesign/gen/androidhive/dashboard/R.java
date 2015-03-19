@@ -708,16 +708,16 @@ public final class R {
         public static final int verbal=0x7f070031;
     }
     public static final class style {
-        public static final int ActionBarCompat=0x7f080003;
+        public static final int ActionBarCompat=0x7f080002;
         /** 
         Base application theme for API 11+. This theme completely replaces
         AppBaseTheme from res/values/styles.xml on API 11+ devices.
     
  API 11 theme customizations can go here. 
          */
-        public static final int AppBaseTheme=0x7f080002;
+        public static final int AppBaseTheme=0x7f080004;
         public static final int AppTheme=0x7f080006;
-        public static final int DashboardButton=0x7f080004;
+        public static final int DashboardButton=0x7f080003;
         public static final int FooterBar=0x7f080005;
         /**  <item name="android:background">@drawable/titlebar_background</item> 
          */

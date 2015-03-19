@@ -23,7 +23,7 @@ public class Result extends Activity {
 	int givenans[] = new int[40];
 	int current = 0;
 	final Context context = this;
-	DatabaseHandlerFR db = new DatabaseHandlerFR(this);
+	DatabaseHandler db = new DatabaseHandler(this);
 
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);

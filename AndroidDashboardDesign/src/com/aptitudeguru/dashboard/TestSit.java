@@ -447,6 +447,12 @@ public class TestSit extends Activity implements OnClickListener {
     alertDialog.show();
 		   	   
 		   	  }
+
+			@Override
+			public void onClick(View arg0) {
+				// TODO Auto-generated method stub
+				
+			}
 		   	
 		   	  
 
