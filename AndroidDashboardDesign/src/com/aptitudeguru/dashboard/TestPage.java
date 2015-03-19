@@ -73,7 +73,7 @@ public class TestPage extends Activity implements OnClickListener
 	private long milifin = 0;
 
 	int k1 = 0;
-
+	
 	// private final long startTime1 =
 	// private final long interval1 = 60*20 * 1000;
 
@@ -188,7 +188,8 @@ public class TestPage extends Activity implements OnClickListener
 		else{
 			j=j.replaceAll("Rs.", "£");
 		}
-		if(local!=france){
+		if(local.equals(france)){
+		}else{
 			j=j.replaceAll("kmph", "mph");
 			j=j.replaceAll("km/hr", "mph");
 			j=j.replaceAll("km", "miles");
@@ -220,7 +221,8 @@ public class TestPage extends Activity implements OnClickListener
 			opt3=opt3.replaceAll("Rs.","£");
 			opt4=opt4.replaceAll("Rs.","£");	
 		}
-		if(local!=france){
+		if(local.equals(france)){
+		}else{
 			opt1=opt1.replaceAll("kmph","mph");
 			opt2=opt2.replaceAll("kmph","mph");
 			opt3=opt3.replaceAll("kmph","mph");
@@ -529,7 +531,8 @@ public class TestPage extends Activity implements OnClickListener
 				sol=sol.replaceAll("Rs.","£");
 			   }
 				
-			   if(local!=france){
+			   if(local.equals(france)){
+			   }else{
 				   	op1=op1.replaceAll("kmph","mph");
 					op1=op1.replaceAll("kmph","mph");
 					op3=op3.replaceAll("kmph","mph");
@@ -676,7 +679,8 @@ public class TestPage extends Activity implements OnClickListener
 			j=j.replaceAll("Rs.","£");
 		}
 		
-		if(local!=france){
+		if(local.equals(france)){
+		}else{
 			opt1=opt1.replaceAll("kmph","mph");
 			opt2=opt2.replaceAll("kmph","mph");
 			opt3=opt3.replaceAll("kmph","mph");
@@ -767,7 +771,8 @@ public class TestPage extends Activity implements OnClickListener
 						j=j.replaceAll("Rs.", "£");
 						
 					}
-					if(local!=france){
+					if(local.equals(france)){
+					}else{
 						j=j.replaceAll("kmph", "mph");
 						j=j.replaceAll("km/hr", "mph");
 						j=j.replaceAll("km","miles");
@@ -799,7 +804,8 @@ public class TestPage extends Activity implements OnClickListener
 						opt4=opt4.replaceAll("Rs.","£");
 					}
 					
-					if(local!=france){
+					if(local.equals(france)){
+					}else{
 						opt1=opt1.replaceAll("kmph","mph");
 						opt2=opt2.replaceAll("kmph","mph");
 						opt3=opt3.replaceAll("kmph","mph");
@@ -877,7 +883,8 @@ public class TestPage extends Activity implements OnClickListener
 					else{
 						j=j.replaceAll("Rs.", "£");
 					}
-					if(local!=france){
+					if(local.equals(france)){
+					}else{
 						j=j.replaceAll("kmph", "mph");
 						j=j.replaceAll("km/hr", "mph");
 						j=j.replaceAll("km","miles");
@@ -909,7 +916,8 @@ public class TestPage extends Activity implements OnClickListener
 						opt4=opt4.replaceAll("Rs.","£");
 					}
 					
-					if(local!=france){
+					if(local.equals(france)){
+					}else{
 						opt1=opt1.replaceAll("kmph","mph");
 						opt2=opt2.replaceAll("kmph","mph");
 						opt3=opt3.replaceAll("kmph","mph");
@@ -1039,5 +1047,5 @@ public class TestPage extends Activity implements OnClickListener
 			return local;
 	
 	}
-
+	
 }

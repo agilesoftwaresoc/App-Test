@@ -232,13 +232,13 @@ public final class R {
 		public static final int annot_note = 0x7f03000a;
 		public static final int annot_setting = 0x7f03000b;
 		public static final int button_shape = 0x7f030010;
-		public static final int input_dialog = 0x7f030028;
-		public static final int outline_dialog = 0x7f03002d;
-		public static final int panel_brightness = 0x7f03002e;
-		public static final int panel_doc_flow = 0x7f03002f;
-		public static final int panel_outline = 0x7f030030;
-		public static final int panel_outline_item = 0x7f030031;
-		public static final int simple_reader_control = 0x7f030047;
+		public static final int input_dialog = 0x7f030029;
+		public static final int outline_dialog = 0x7f03002e;
+		public static final int panel_brightness = 0x7f03002f;
+		public static final int panel_doc_flow = 0x7f030030;
+		public static final int panel_outline = 0x7f030031;
+		public static final int panel_outline_item = 0x7f030032;
+		public static final int simple_reader_control = 0x7f030048;
 	}
 	public static final class string {
 		public static final int bottom_menu_thumbnail = 0x7f07002c;

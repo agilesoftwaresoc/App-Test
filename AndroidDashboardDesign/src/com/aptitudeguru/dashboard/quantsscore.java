@@ -18,10 +18,9 @@ public class quantsscore extends Activity {
 
 	int y1[];
 	TextView t1, t2, t3, t4;
-<<<<<<< Updated upstream
+
 	DatabaseHandler db = new DatabaseHandler(this);
-=======
->>>>>>> Stashed changes
+
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
