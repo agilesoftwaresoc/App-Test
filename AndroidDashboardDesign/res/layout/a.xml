@@ -18,7 +18,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="#000000" />
 <Button
-                    android:id="@+id/button1"
+                    android:id="@+id/btn_sitjudge"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:layout_alignLeft="@+id/textView1"
@@ -30,19 +30,19 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/button1"
-        android:layout_alignBottom="@+id/button1"
+        android:layout_alignBaseline="@+id/btn_sitjudge"
+        android:layout_alignBottom="@+id/btn_sitjudge"
         android:layout_alignParentRight="true"
         android:layout_margin="10dp"
         android:layout_marginLeft="52dp"
-        android:layout_toRightOf="@+id/button1"
+        android:layout_toRightOf="@+id/btn_sitjudge"
         android:gravity="left"
         android:text="Correct :"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="#000000" />
 
                 <Button
-                    android:id="@+id/button2"
+                    android:id="@+id/btn_langchange"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:layout_alignLeft="@+id/textView1"
@@ -52,10 +52,10 @@
   
 
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/btn_sitjudge1"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_alignLeft="@+id/button2"
+        android:layout_alignLeft="@+id/btn_langchange"
         android:layout_below="@+id/textView1"
         android:layout_marginTop="24dp" />
 
@@ -76,11 +76,11 @@
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/button2"
-        android:layout_alignBottom="@+id/button2"
+        android:layout_alignBaseline="@+id/btn_langchange"
+        android:layout_alignBottom="@+id/btn_langchange"
         android:layout_alignParentRight="true"
         android:layout_margin="10dp"
-        android:layout_toRightOf="@+id/button2"
+        android:layout_toRightOf="@+id/btn_langchange"
         android:gravity="left"
         android:text="Unattempted :"
         android:textAppearance="?android:attr/textAppearanceMedium"
@@ -90,8 +90,8 @@
         android:id="@+id/button3"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_alignLeft="@+id/button2"
-        android:layout_below="@+id/button2"
+        android:layout_alignLeft="@+id/btn_langchange"
+        android:layout_below="@+id/btn_langchange"
         android:layout_marginTop="17dp" />
 
     <TextView

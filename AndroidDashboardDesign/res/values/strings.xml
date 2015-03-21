@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
-
+<resources xmlns:tools="http://schemas.android.com/tools">
+	
     <string name="hello">Hello World, AndroidDashboardDesignActivity!</string>
     <string name="app_name">AndroidDashboardDesign</string>
-    <string name="quants">Quantitative</string>
+    <string name="quants" tools:ignore="MissingTranslation">Quantitative</string>
     <string name="language">Language</string>
     <string name="verbal">Verbal And Logical</string>
     <string name="compfun">Computer Fundamentals</string>
@@ -73,6 +73,5 @@
     <string name="v8">Data Suffiiency</string>
     <string name="v9">Cause And Effects</string>
     <string name="head">Aptitude Guru</string>
-    <string name="sj">Situational Judgement</string>
 
 </resources>

@@ -18,9 +18,7 @@ public class quantsscore extends Activity {
 
 	int y1[];
 	TextView t1, t2, t3, t4;
-
-	DatabaseHandler db = new DatabaseHandler(this);
-
+	DatabaseHandlerFR db = new DatabaseHandlerFR(this);
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

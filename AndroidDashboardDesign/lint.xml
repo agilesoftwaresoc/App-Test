@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lint>
+    <issue id="DuplicateIds" severity="ignore" />
+    <issue id="HardcodedText" severity="ignore" />
+    <issue id="MissingTranslation" severity="ignore" />
+    <issue id="ScrollViewSize" severity="ignore" />
+    <issue id="SpUsage" severity="ignore" />
+    <issue id="UselessParent" severity="ignore" />
+</lint>

@@ -180,13 +180,13 @@ public class TestPage extends Activity implements OnClickListener
 		 String j = q.getQues();
 		
 		if(local.equals(france)){
-			j= j.replaceAll("Rs.","€");
+			j= j.replaceAll("Rs.","Â€");
 		}
 		else if(local.equals(us)){
 			j=j.replaceAll("Rs.","\\$");
 		}
 		else{
-			j=j.replaceAll("Rs.", "£");
+			j=j.replaceAll("Rs.", "Â£");
 		}
 		if(local.equals(france)){
 		}else{
@@ -204,10 +204,10 @@ public class TestPage extends Activity implements OnClickListener
 		String opt4 = q.getOption4();
 		
 		if(local.equals(france)){
-			opt1=opt1.replaceAll("Rs.","€");
-			opt2=opt2.replaceAll("Rs.","€");
-			opt3=opt3.replaceAll("Rs.","€");
-			opt4=opt4.replaceAll("Rs.","€");
+			opt1=opt1.replaceAll("Rs.","Â€");
+			opt2=opt2.replaceAll("Rs.","Â€");
+			opt3=opt3.replaceAll("Rs.","Â€");
+			opt4=opt4.replaceAll("Rs.","Â€");
 		}
 		else if(local.equals(us)){
 			opt1=opt1.replaceAll("Rs.","\\$");
@@ -216,10 +216,10 @@ public class TestPage extends Activity implements OnClickListener
 			opt4=opt4.replaceAll("Rs.","\\$");
 		}
 		else{
-			opt1=opt1.replaceAll("Rs.","£");
-			opt2=opt2.replaceAll("Rs.","£");
-			opt3=opt3.replaceAll("Rs.","£");
-			opt4=opt4.replaceAll("Rs.","£");	
+			opt1=opt1.replaceAll("Rs.","Â£");
+			opt2=opt2.replaceAll("Rs.","Â£");
+			opt3=opt3.replaceAll("Rs.","Â£");
+			opt4=opt4.replaceAll("Rs.","Â£");	
 		}
 		if(local.equals(france)){
 		}else{
@@ -507,12 +507,12 @@ public class TestPage extends Activity implements OnClickListener
 				String op4 = q.getOption4();
 				String sol = q.getSol();
 				if(local.equals(france)){
-					op1=op1.replaceAll("Rs.","€");
-					op2=op2.replaceAll("Rs.","€");
-					op3=op3.replaceAll("Rs.","€");
-					op4=op4.replaceAll("Rs.","€");
-					ques=ques.replaceAll("Rs.","€");
-					sol=sol.replaceAll("Rs.","€");
+					op1=op1.replaceAll("Rs.","Â€");
+					op2=op2.replaceAll("Rs.","Â€");
+					op3=op3.replaceAll("Rs.","Â€");
+					op4=op4.replaceAll("Rs.","Â€");
+					ques=ques.replaceAll("Rs.","Â€");
+					sol=sol.replaceAll("Rs.","Â€");
 				}
 				else if(local.equals(us)){
 				op1=op1.replaceAll("Rs.","\\$");
@@ -523,12 +523,12 @@ public class TestPage extends Activity implements OnClickListener
 				sol=sol.replaceAll("Rs.","\\$");
 				
 			   }else{
-				op1=op1.replaceAll("Rs.","£");
-				op2=op2.replaceAll("Rs.","£");
-				op3=op3.replaceAll("Rs.","£");
-				op4=op4.replaceAll("Rs.","£");
-				ques=ques.replaceAll("Rs.","£");
-				sol=sol.replaceAll("Rs.","£");
+				op1=op1.replaceAll("Rs.","Â£");
+				op2=op2.replaceAll("Rs.","Â£");
+				op3=op3.replaceAll("Rs.","Â£");
+				op4=op4.replaceAll("Rs.","Â£");
+				ques=ques.replaceAll("Rs.","Â£");
+				sol=sol.replaceAll("Rs.","Â£");
 			   }
 				
 			   if(local.equals(france)){
@@ -657,11 +657,11 @@ public class TestPage extends Activity implements OnClickListener
 		String opt4 = q.getOption4();
 		
 		if(local.equals(france)){
-			opt1=opt1.replaceAll("Rs.","€");
-			opt2=opt2.replaceAll("Rs.","€");
-			opt3=opt3.replaceAll("Rs.","€");
-			opt4=opt4.replaceAll("Rs.","€");
-			j=j.replaceAll("Rs.","€");
+			opt1=opt1.replaceAll("Rs.","Â€");
+			opt2=opt2.replaceAll("Rs.","Â€");
+			opt3=opt3.replaceAll("Rs.","Â€");
+			opt4=opt4.replaceAll("Rs.","Â€");
+			j=j.replaceAll("Rs.","Â€");
 		}
 		
 		else if(local.equals(us)){
@@ -672,11 +672,11 @@ public class TestPage extends Activity implements OnClickListener
 			j=j.replaceAll("Rs.", "\\$");
 		}
 		else{
-			opt1=opt1.replaceAll("Rs.","£");
-			opt2=opt2.replaceAll("Rs.","£");
-			opt3=opt3.replaceAll("Rs.","£");
-			opt4=opt4.replaceAll("Rs.","£");
-			j=j.replaceAll("Rs.","£");
+			opt1=opt1.replaceAll("Rs.","Â£");
+			opt2=opt2.replaceAll("Rs.","Â£");
+			opt3=opt3.replaceAll("Rs.","Â£");
+			opt4=opt4.replaceAll("Rs.","Â£");
+			j=j.replaceAll("Rs.","Â£");
 		}
 		
 		if(local.equals(france)){
@@ -762,13 +762,13 @@ public class TestPage extends Activity implements OnClickListener
 					// i=i+1;
 					String j = q.getQues();
 					if(local.equals(france)){
-						j=j.replaceAll("Rs.","€");
+						j=j.replaceAll("Rs.","Â€");
 					}
 					else if(local.equals(us)){
 						j=j.replaceAll("Rs.", "\\$");
 					}
 					else {	
-						j=j.replaceAll("Rs.", "£");
+						j=j.replaceAll("Rs.", "Â£");
 						
 					}
 					if(local.equals(france)){
@@ -786,10 +786,10 @@ public class TestPage extends Activity implements OnClickListener
 					String opt4 = q.getOption4();
 					// t1.setText();
 					if(local.equals(france)){
-						opt1=opt1.replaceAll("Rs.","€");
-						opt2=opt2.replaceAll("Rs.","€");
-						opt3=opt3.replaceAll("Rs.","€");
-						opt4=opt4.replaceAll("Rs.","€");
+						opt1=opt1.replaceAll("Rs.","Â€");
+						opt2=opt2.replaceAll("Rs.","Â€");
+						opt3=opt3.replaceAll("Rs.","Â€");
+						opt4=opt4.replaceAll("Rs.","Â€");
 					}
 					else if(local.equals(us)){
 						opt1=opt1.replaceAll("Rs.","\\$");
@@ -798,10 +798,10 @@ public class TestPage extends Activity implements OnClickListener
 						opt4=opt4.replaceAll("Rs.","\\$");
 					}
 					else{
-						opt1=opt1.replaceAll("Rs.","£");
-						opt2=opt2.replaceAll("Rs.","£");
-						opt3=opt3.replaceAll("Rs.","£");
-						opt4=opt4.replaceAll("Rs.","£");
+						opt1=opt1.replaceAll("Rs.","Â£");
+						opt2=opt2.replaceAll("Rs.","Â£");
+						opt3=opt3.replaceAll("Rs.","Â£");
+						opt4=opt4.replaceAll("Rs.","Â£");
 					}
 					
 					if(local.equals(france)){
@@ -875,13 +875,13 @@ public class TestPage extends Activity implements OnClickListener
 					// i=i+1;
 					String j = q.getQues();
 					if(local.equals(france)){
-						j=j.replaceAll("Rs.","€");
+						j=j.replaceAll("Rs.","Â€");
 					}
 					else if(local.equals(us)){
 						j=j.replaceAll("Rs.", "\\$");
 					}
 					else{
-						j=j.replaceAll("Rs.", "£");
+						j=j.replaceAll("Rs.", "Â£");
 					}
 					if(local.equals(france)){
 					}else{
@@ -898,10 +898,10 @@ public class TestPage extends Activity implements OnClickListener
 					String opt4 = q.getOption4();
 					
 					if(local.equals(france)){
-						opt1=opt1.replaceAll("Rs.","€");
-						opt2=opt2.replaceAll("Rs.","€");
-						opt3=opt3.replaceAll("Rs.","€");
-						opt4=opt4.replaceAll("Rs.","€");
+						opt1=opt1.replaceAll("Rs.","Â€");
+						opt2=opt2.replaceAll("Rs.","Â€");
+						opt3=opt3.replaceAll("Rs.","Â€");
+						opt4=opt4.replaceAll("Rs.","Â€");
 					}
 					else if(local.equals(us)){
 						opt1=opt1.replaceAll("Rs.","\\$");
@@ -910,10 +910,10 @@ public class TestPage extends Activity implements OnClickListener
 						opt4=opt4.replaceAll("Rs.","\\$");
 					}
 					else{
-						opt1=opt1.replaceAll("Rs.","£");
-						opt2=opt2.replaceAll("Rs.","£");
-						opt3=opt3.replaceAll("Rs.","£");
-						opt4=opt4.replaceAll("Rs.","£");
+						opt1=opt1.replaceAll("Rs.","Â£");
+						opt2=opt2.replaceAll("Rs.","Â£");
+						opt3=opt3.replaceAll("Rs.","Â£");
+						opt4=opt4.replaceAll("Rs.","Â£");
 					}
 					
 					if(local.equals(france)){

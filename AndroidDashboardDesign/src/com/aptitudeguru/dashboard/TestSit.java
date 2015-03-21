@@ -1,5 +1,9 @@
 package com.aptitudeguru.dashboard;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.text.DecimalFormat;
 import java.util.List;
 import java.util.Random;
@@ -11,6 +15,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.AssetManager;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -32,78 +37,113 @@ import androidhive.dashboard.R;
 
 
 
-public class TestSit extends Activity implements OnClickListener {
+public class TestSit extends Activity{
 
 	TextView t1,t2;
-	TextField te1;
-	//Hello
 	
-	int count=1;
-	int start=1;
-	
-	static int min=0,sec=0;;
-	int index1=0,index=0,index3=0;
-	int b[]=new int[40];
-	int ans[]=new int[40];
-	int ansindex=0;
-	//NewsFeedActivity n=new NewsFeedActivity();
-    String cat="";
-	int click=0;
-	int a[]=new int[40]; 
-	int initial[]=new int[40];
-	int initans[]=new int[40];
-	int givenans[]=new int[40];
-	int gotoclick[]=new int[20];
-	
-	Random r=new Random();
-	int STATIC_INTEGER_VALUE=1;
-	String PUBLIC_STATIC_STRING_IDENTIFIER;
+	EditText EditText1;
+	String sol = "";
 	final Context context = this;
-	String time;
+	//DatabaseHandler db = new DatabaseHandler(this);
 	
-	   DatabaseHandler db = new DatabaseHandler(this);
-
-	  // String category="7777";
-	   	 private Button startB;
-	   	 public TextView text;
-	 
-	   	 int k1=0;
 		   	
 	   @Override
        public void onActivityResult(int requestCode,int resultCode,Intent data)
        {
         super.onActivityResult(requestCode, resultCode, data);
-        String extraData=data.getStringExtra("ComingFrom");
-        int j1=Integer.parseInt(extraData);
-        Log.d("passed id: ", j1+"");
-        Log.d("getting",extraData);
-        Log.d("getting",extraData);
-        int j2=a[j1];
-        click=j1;
-        
-        CTable q=db.getC(j2,cat);
-        //i=i+1;
-        String j= q.getQues();
-        t1.setText(j);
-        t2.setText("   "+(j1+1)+"/20");
-        Log.d("id: ", j2+"");
-        
+	   
+	   
        }
+	   
 	   
 	    public void onCreate(Bundle savedInstanceState) {
 	        super.onCreate(savedInstanceState);
-	        setContentView(R.layout.test);
+	        setContentView(R.layout.sittest);
 	        
-	        Bundle bundle = getIntent().getExtras();
-	         cat = bundle.getString("cat");
-	        start=bundle.getInt("start");
-	        Log.d("category",cat);
-
-	   	  text = (TextView) this.findViewById(R.id.timer);
-	        
-	       AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
+	        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
 
 			TextView title = new TextView(context);
+			
+			Button btn_home = (Button) findViewById(R.id.btn_home);
+
+			
+			Button btn_fav = (Button) findViewById(R.id.btn_fav);
+
+			
+			Button btn_score = (Button) findViewById(R.id.btn_score);
+
+			
+			Button btn_soundon = (Button) findViewById(R.id.btn_tutorial);
+
+		
+			Button btn_about = (Button) findViewById(R.id.btn_about);
+			 Button btn_help = (Button) findViewById(R.id.btn_help);
+			 btn_help.setOnClickListener(new View.OnClickListener() {
+
+		  			@Override
+		  			public void onClick(View view) {
+		  			
+		  				Intent i = new Intent(getApplicationContext(),
+		  					Help.class);
+
+		  				startActivity(i);
+		  			}
+		  		});
+
+				
+				btn_home.setOnClickListener(new View.OnClickListener() {
+
+					@Override
+					public void onClick(View view) {
+						Intent i = new Intent(getApplicationContext(),AndroidDashboardDesignActivity.class);
+						startActivity(i);
+					}
+				});
+
+				
+				btn_fav.setOnClickListener(new View.OnClickListener() {
+
+					@Override
+					public void onClick(View view) {
+						
+						Intent i = new Intent(getApplicationContext(), FavPage.class);
+						startActivity(i);
+					}
+				});
+
+				
+				btn_score.setOnClickListener(new View.OnClickListener() {
+
+					@Override
+					public void onClick(View view) {
+						
+						Intent i = new Intent(getApplicationContext(), scoremenu.class);
+						startActivity(i);
+					}
+				});
+
+				
+				btn_soundon.setOnClickListener(new View.OnClickListener() {
+
+					@Override
+					public void onClick(View view) {
+						
+						Intent i = new Intent(getApplicationContext(),
+								Tutorialpage.class);
+						startActivity(i);
+					}
+				});
+
+				
+				btn_about.setOnClickListener(new View.OnClickListener() {
+
+					@Override
+					public void onClick(View view) {
+						
+						Intent i = new Intent(getApplicationContext(), AboutUs.class);
+						startActivity(i);
+					}
+				});
            title.setText("Aptitude App");
            title.setBackgroundColor(Color.DKGRAY);
            title.setPadding(10, 10, 10, 10);
@@ -111,7 +151,28 @@ public class TestSit extends Activity implements OnClickListener {
            title.setTextColor(Color.WHITE);
            title.setTextSize(20);
            alertDialogBuilder.setCustomTitle(title);
- 
+           t1 = (TextView) this.findViewById(R.id.t1);
+           String j;
+    	   j ="Scenario 1: \n \n \n"
+    			 +
+    			 "You are a Retail Assistant working in the Saldringham branch of More Than Pens plc, a national stationer's chain." +
+    "More Than Pens has over 1000 stores, primarily in the UK, including 451 travel outlets at airports, train stations and motorway service areas and 627 high street stores. \n" +
+    "More Than Pens sells a wide range of newspapers, magazines, books, stationery and impulse products; most branches are open 7 days a week between 8.30am and 5.30pm.\n" +
+    "As a Retail Assistant you are responsible for providing exceptional customer service whilst demonstrating product knowledge to maximise sales.\n " +
+    "You work primarily in the book section of the Saldringham branch, however all the branch staff work as a unified team and therefore you are often required to work in other sections throughout the store.\n" +
+    "\n" +
+    "Situation 1:\n" +
+    "A customer has been browsing in your section for about 10 minutes and is looking increasingly dissatisfied and frustrated.\n" +
+    "He approaches you and asks whether you have a particular book that he is looking for, and after checking on your computer, you have to inform him that it is currently out of stock.\n \n" +
+    "Answer A) Apologise that the book is unavailable and suggest he try Morethanpens.co.uk or another online retailer instead.\n \n" +
+    "Answer B) Offer to order the book for the customer and let him know how long this will take. Offer to call him when the book arrives.\n \n" +
+    "Answer C) Give the customer the ISBN (book serial number) of the book so that he can easily and quickly search it out elsewhere, either online or at another bookshop.\n \n" +
+    "Answer D) Suggest he try the Alpston branch of More Than Pens (which is the nearest neighbouring town, 40 minutes drive away) or other bookshops in Saldringham. \n \n";
+    	   
+
+    	   t1.setText(j);
+    	   
+    	   
 			// set dialog message
 			alertDialogBuilder
 				.setMessage("Start Test?")
@@ -133,263 +194,69 @@ public class TestSit extends Activity implements OnClickListener {
 						TestSit.this.finish();
 					}
 				});
- 
+				
 				// create alert dialog
 				AlertDialog alertDialog = alertDialogBuilder.create();
  
 				// show it
 				alertDialog.show();
 			
-	   	
-	      /**
-	         * Creating all buttons instances
-	         * */
-	        // Dashboard News feed button
-	        Button btn_home = (Button) findViewById(R.id.btn_home);
-	        
-	        // Dashboard Friends button
-	        Button btn_fav = (Button) findViewById(R.id.btn_fav);
-	        
-	        // Dashboard Messages button
-	        Button btn_hint = (Button) findViewById(R.id.btn_hint);
-	        
-	        // Dashboard Places button
-	        Button btn_goto = (Button) findViewById(R.id.btn_goto);
-	        
-	        // Dashboard Events button
-	        Button btn_help = (Button) findViewById(R.id.btn_help);
-			
-			btn_help.setOnClickListener(new View.OnClickListener() {
-
-				@Override
-				public void onClick(View view) {
-					// Launching News Feed Screen
-					Intent i = new Intent(getApplicationContext(),
-						help1.class);
-
-					startActivity(i);
-				}
-			});
-			
-	        Button btn_finish = (Button) findViewById(R.id.btn_finish);
-	        
-	        // PAUSE TEST CODE
-	        Button btn_pause = (Button) findViewById(R.id.btn_pause);
-	        
-	        //EditText editText = (EditText) findViewById(R.id.search);
-
+	      Button btn_submit = (Button) findViewById(R.id.btn_submit);
+	      EditText1 = (EditText) findViewById(R.id.EditText1);
 	        /**
 	         * Handling all button click events
 	         * */
        
 	        //This needs to turn into "Submit Answer" Button instead.
-	        btn_finish.setOnClickListener(new OnClickListener() {
+	        btn_submit.setOnClickListener(new OnClickListener() {
 	        	 
 	    		@Override
 	    		public void onClick(View arg0) {
-	     
-	    			AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
-	     
+	    			
+	    		
+	    		AlertDialog.Builder wrongdata = new AlertDialog.Builder(context);
+	    			wrongdata.create();
 	    			
 	    			TextView title = new TextView(context);
 		            title.setText("Aptitude App");
 		            title.setBackgroundColor(Color.DKGRAY);
-		            title.setPadding(10, 10, 10, 10);
+		           title.setPadding(10, 10, 10, 10);
 		            title.setGravity(Gravity.CENTER);
-		            title.setTextColor(Color.WHITE);
+		           title.setTextColor(Color.WHITE);
 		            title.setTextSize(20);
-		            alertDialogBuilder.setCustomTitle(title);
+		            
+		            
+	    						
+		            sol = EditText1.getText().toString();
+		            System.out.println(sol);
+	    		    			if(sol.equals("a") || sol.equals("A") ||sol.equals("b") || sol.equals("B") || sol.equals("c")|| sol.equals("C") || sol.equals("d") || sol.equals("D"))
+	    		    			{
+	    		    				Intent i = new Intent(getApplicationContext(), SitFeed.class);
+	    	    					i.putExtra("SolSelected", sol);
+	    	          				startActivity(i);
+	    	    			
+	    		    			}
+	    		    			else
+	    		    			{
+	    		    				
+	    		    				wrongdata.setMessage("Wrong input, please choose either A B C or D");
+	    		    				wrongdata.setCancelable(true);
+	    		    				wrongdata.show();
+	    		    			}
 
-	    			
-	    			// set title
-	    		//alertDialogBuilder.setTitle();
-	     
-	    			// set dialog message
-	    			alertDialogBuilder
-	    				.setMessage("Click yes to exit!")
-	    				.setCancelable(false)
-	    				.setPositiveButton("Yes",new DialogInterface.OnClickListener() {
-	    					public void onClick(DialogInterface dialog,int id) {
-	    						// if this button is clicked, close
-	    						// current activity
-	    						Intent i = new Intent(getApplicationContext(), ShowScorec.class);
-	    					    time=text.getText()+"";
-	    					 
-	    					    sec=sec+40;
-	    					    String timetaken=min+"."+sec+"";
-	    					    
-	    					   
-	    					    double timetak=Float.parseFloat(timetaken);
-	    					    
-	    					   
-	    					    double tt=20.00-timetak;
-	    					    
-	    					  DecimalFormat df = new DecimalFormat("00.00");
-	    					    String j=df.format(tt);
-	    					   // Log.d("foramted tt",tt+"");
-	    					  //  String j=String.format("%.2g%n",tt);
-	    					  //  Log.d("tt", j+"");
-	    					    
-	    					    
-	    						i.putExtra("score", ans);
-	    						i.putExtra("givenans", givenans);
-	    						i.putExtra("allid", a);
-	    						i.putExtra("tt", j);
-	    						i.putExtra("category", cat);
-	    						
-	          					startActivity(i);
-	    						TestSit.this.finish();
-	    					}
-	    				  })
-	    				.setNegativeButton("No",new DialogInterface.OnClickListener() {
-	    					public void onClick(DialogInterface dialog,int id) {
-	    						// if this button is clicked, just close
-	    						// the dialog box and do nothing
-	    						dialog.cancel();
-	    						
-	    					}
-	    				});
-	     
-	    				// create alert dialog
-	    				AlertDialog alertDialog = alertDialogBuilder.create();
-	     
-	    				// show it
-	    				
-	    				alertDialog.show();
-	    				
 	    			}
 	    		});
-	    	
-	        
-	       // Listening Friends button click
-	        /*btn_fav.setOnClickListener(new View.OnClickListener() {
-				
-				@Override
-				public void onClick(View view) {
-					// Launching News Feed Screen
-					//Intent i = new Intent(getApplicationContext(), FriendsActivity.class);
-					//startActivity(i);
-					
-						
-									int val=a[click];
-									CTable q=db.getC(val,cat);
-									String ques=q.getQues();
-									String sol=q.getSol();
-									db.addFav(new Favourite(ques,op1,op2,op3,op4,sol));
-									
-									 Toast.makeText(getApplicationContext(), "Added To Favourite",Toast.LENGTH_SHORT).show();
-									
-								
 
-							// show it
-							
-					
-				}
-			});*/
-	        
-	        // Listening Messages button click
-	        btn_hint.setOnClickListener(new View.OnClickListener() {
-				
-				@Override
-				public void onClick(View view) {
-					// Launching News Feed Screen
-					Intent i = new Intent(getApplicationContext(), Hint.class);
-					i.putExtra("cat", cat);
-					startActivity(i);
-				}
-			});
-	        
-	        // Listening to Places button click
-	        btn_goto.setOnClickListener(new View.OnClickListener() {
-				
-				@Override
-				public void onClick(View view) {
-					// Launching News Feed Screen
-					Intent i = new Intent(getApplicationContext(),Calender.class);   
-					i.putExtra("gotoclick", gotoclick);
-					i.putExtra("click", click);
-					startActivityForResult(i, STATIC_INTEGER_VALUE);
-				}
-			});
-	        
-	        // Listening to Events button click
-	   
-	        
-	        Log.d("outside","outside");
-	        int g=0;
-		       List<CTable> quants = db.getAllC(cat);       
-		        for (CTable cn : quants) {
-		        	
-		        	if(g==38)
-		        		break;
-		        	else
-		        	{
-		        		g++;
-		        	Log.d("insidee","insidee");
-		        	count=cn.getID();
-		        	String sol1=cn.getSol();
-		        	int sol=0;
-		        	if(sol1.equalsIgnoreCase("a"))
-		        		sol=1;
-		        	else if(sol1.equalsIgnoreCase("b"))
-		        		sol=2;
-		        	else if(sol1.equalsIgnoreCase("c"))
-		        		sol=3;
-		        	else
-		        		sol=4;
-		        	//int j=r.nextInt(2);
-		        	//int k=(count+j+1);
-				   //  count=k;
-				     initial[index3]=count;
-				     initans[index3]=sol;
-		          index3=index3+1;
-		        	}
-		        }       
-		        
-				 count=r.nextInt(3);
-			        count=count+1;
-			      
-			        t1=(TextView) findViewById(R.id.textView1);
-			        t2=(TextView) findViewById(R.id.questrack);
-			        
-			      //  te=(textfield) findViewById(R.id.textField);
-			        
-			       
-			        Log.d("Reading: ", "Reading all contacts.."); 
-	       
-	     
-			        CTable q=db.getC(initial[count],cat);
-				       
-				      a[index++]=initial[count];
-				       givenans[0]=initans[count];
-				       t2.setText("   "+"1/20");
-				        String j= q.getQues();
-				    
-				        t1.setText(j);
-						
-			    for(int x=1;x<20;x++)
-			      {
-			    	  int  k=(count+1);
-					    count=k;
-					     a[index]=initial[k];
-					     givenans[index]=initans[k];
-					     index=index+1;
-			      }
+			  
+				        
+				        
 	 }
 	    
-	    //timer
-	 
-		   	 
-		   	
-
-		   	   public void onFinish() {
-		   	   text.setText("Time's up!");
+		   	   @SuppressWarnings("deprecation")
+			public void onFinish() {
+		   		   
 		         	AlertDialog alertDialog = new AlertDialog.Builder(
                     TestSit.this).create();
-
-              
-	     
-	    			
 	    			TextView title = new TextView(context);
 		            title.setText("Aptitude App");
 		            title.setBackgroundColor(Color.DKGRAY);
@@ -398,11 +265,7 @@ public class TestSit extends Activity implements OnClickListener {
 		            title.setTextColor(Color.WHITE);
 		            title.setTextSize(20);
 		            alertDialog.setCustomTitle(title);
-		         	
-		            
-                   // Setting Dialog Title
-                 // alertDialog.setTitle("Apptitude App");
-
+		
                   // Setting Dialog Message
                   alertDialog.setMessage("TIME'S UP");
                 
@@ -413,27 +276,8 @@ public class TestSit extends Activity implements OnClickListener {
                   alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
                 	  public void onClick(DialogInterface dialog, int which) {
                 		  // Write your code here to execute after dialog closed
-                		  Intent i = new Intent(getApplicationContext(), ShowScorec.class);
-                		  time=text.getText()+"";
-	    					 
-  					    sec=sec+40;
-  					    String timetaken=min+"."+sec+"";
-  					    
-  					   
-  					    double timetak=Float.parseFloat(timetaken);
-  					    
-  					   
-  					    double tt=20.00-timetak;
-  					    
-  					  DecimalFormat df = new DecimalFormat("00.00");
-  					    String j=df.format(tt);
-  					    i.putExtra("tt", j);
-
-  						i.putExtra("score", ans);
-  						i.putExtra("givenans", givenans);
-  						i.putExtra("allid", a);
-						i.putExtra("category", cat);
-        					startActivity(i);
+                		 // Intent i = new Intent(getApplicationContext(), ShowSitFeed.class);
+        					//startActivity(i);
   						TestSit.this.finish();
                 		  
                 	  }
@@ -448,11 +292,6 @@ public class TestSit extends Activity implements OnClickListener {
 		   	   
 		   	  }
 
-			@Override
-			public void onClick(View arg0) {
-				// TODO Auto-generated method stub
-				
-			}
 		   	
 		   	  
 

@@ -229,7 +229,7 @@
                     android:textColor="#000000" />
 
                 <Button
-                    android:id="@+id/button1"
+                    android:id="@+id/btn_sitjudge"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:layout_alignParentLeft="true"
@@ -238,11 +238,11 @@
                   android:layout_marginLeft="10dp"/>
 
                 <Button
-                    android:id="@+id/button2"
+                    android:id="@+id/btn_langchange"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:layout_alignParentLeft="true"
-                    android:layout_below="@+id/button1"
+                    android:layout_below="@+id/btn_sitjudge"
                     android:layout_marginTop="24dp"
                    android:background="#0000ff"
                    android:layout_marginLeft="10dp" />
@@ -252,7 +252,7 @@
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:layout_alignParentLeft="true"
-                    android:layout_below="@+id/button2"
+                    android:layout_below="@+id/btn_langchange"
                     android:layout_marginTop="20dp"
                     android:background="#ff0000"
                     android:layout_marginLeft="10dp" />
@@ -261,12 +261,12 @@
                     android:id="@+id/textView2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignBaseline="@+id/button1"
-                    android:layout_alignBottom="@+id/button1"
+                    android:layout_alignBaseline="@+id/btn_sitjudge"
+                    android:layout_alignBottom="@+id/btn_sitjudge"
                     android:layout_alignParentRight="true"
                     android:layout_margin="10dp"
                     android:layout_marginLeft="18dp"
-                    android:layout_toRightOf="@+id/button1"
+                    android:layout_toRightOf="@+id/btn_sitjudge"
                     android:text="Correct :"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:textColor="#000000" />
@@ -275,11 +275,11 @@
                     android:id="@+id/textView4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignBaseline="@+id/button2"
-                    android:layout_alignBottom="@+id/button2"
+                    android:layout_alignBaseline="@+id/btn_langchange"
+                    android:layout_alignBottom="@+id/btn_langchange"
                     android:layout_alignRight="@+id/textView1"
                     android:layout_margin="10dp"
-                    android:layout_toRightOf="@+id/button2"
+                    android:layout_toRightOf="@+id/btn_langchange"
                     android:text="Unattempted :"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:textColor="#000000" />
